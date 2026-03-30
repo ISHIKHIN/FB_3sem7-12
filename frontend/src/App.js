@@ -13,7 +13,7 @@ const ProtectedRoute = ({ children, allowedRoles = null }) => {
     const { user, loading } = useAuth();
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div style={{ textAlign: 'center', padding: '40px' }}>Loading...</div>;
     }
 
     if (!user) {
@@ -31,7 +31,7 @@ function AppContent() {
     return (
         <BrowserRouter>
             <Navbar />
-            <div style={{ padding: '20px' }}>
+            <div style={{ padding: '20px', maxWidth: '1200px', margin: '0 auto' }}>
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />

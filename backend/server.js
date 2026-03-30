@@ -136,7 +136,6 @@ async function initTestData() {
         isActive: true
     });
 
-    // ТЕСТОВЫЕ ТОВАРЫ ДЛЯ ЗООМАГАЗИНА
     products = [
         {
             id: String(nextProductId++),

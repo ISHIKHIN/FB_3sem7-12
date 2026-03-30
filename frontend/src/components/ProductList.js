@@ -40,71 +40,86 @@ function ProductList() {
             maxWidth: '1200px',
             margin: '0 auto',
         },
+        title: {
+            fontSize: '24px',
+            fontWeight: 'normal',
+            marginBottom: '20px',
+        },
         grid: {
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
             gap: '20px',
         },
         card: {
-            border: '1px solid #ddd',
-            borderRadius: '8px',
-            padding: '15px',
-            backgroundColor: '#f9f9f9',
+            border: '1px solid #eee',
+            padding: '20px',
+            background: '#fff',
+            borderRadius: '2px',
         },
-        title: {
-            fontSize: '1.2rem',
-            fontWeight: 'bold',
+        productTitle: {
+            fontSize: '18px',
+            fontWeight: '500',
+            marginBottom: '10px',
+        },
+        category: {
+            fontSize: '12px',
+            color: '#666',
             marginBottom: '10px',
         },
         price: {
-            color: '#28a745',
-            fontSize: '1.1rem',
+            fontSize: '20px',
             fontWeight: 'bold',
             margin: '10px 0',
         },
+        description: {
+            fontSize: '13px',
+            color: '#666',
+            marginBottom: '15px',
+        },
         button: {
-            backgroundColor: '#dc3545',
-            color: 'white',
+            backgroundColor: '#000',
+            color: '#fff',
             border: 'none',
-            padding: '5px 10px',
-            borderRadius: '4px',
+            padding: '6px 12px',
+            fontSize: '12px',
             cursor: 'pointer',
-            marginRight: '10px',
+            borderRadius: '2px',
+            marginRight: '8px',
         },
-        editButton: {
-            backgroundColor: '#ffc107',
-            color: 'black',
+        viewButton: {
+            backgroundColor: '#666',
+            color: '#fff',
             border: 'none',
-            padding: '5px 10px',
-            borderRadius: '4px',
+            padding: '6px 12px',
+            fontSize: '12px',
             cursor: 'pointer',
-            marginRight: '10px',
-        },
-        link: {
-            textDecoration: 'none',
+            borderRadius: '2px',
+            marginRight: '8px',
         },
     };
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div style={{ color: 'red' }}>{error}</div>;
+    if (loading) return <div style={{ textAlign: 'center', padding: '40px' }}>Loading...</div>;
+    if (error) return <div style={{ color: '#ff0000', textAlign: 'center' }}>{error}</div>;
 
     return (
         <div style={styles.container}>
-            <h2>Products</h2>
+            <h2 style={styles.title}>Плюшки</h2>
             <div style={styles.grid}>
                 {products.map(product => (
                     <div key={product.id} style={styles.card}>
-                        <div style={styles.title}>{product.title}</div>
-                        <div>Category: {product.category}</div>
-                        <div style={styles.price}>${product.price}</div>
-                        <div>Description: {product.description.substring(0, 50)}...</div>
-                        <div style={{ marginTop: '10px' }}>
-                            <Link to={`/products/${product.id}`} style={styles.link}>
-                                <button style={styles.editButton}>View</button>
+                        <div style={styles.productTitle}>{product.title}</div>
+                        <div style={styles.category}>{product.category}</div>
+                        <div style={styles.price}>{product.price} ₽</div>
+                        <div style={styles.description}>
+                            {product.description.substring(0, 80)}
+                        </div>
+                        <div>
+                            <Link to={`/products/${product.id}`}>
+                                <button style={styles.viewButton}>View</button>
                             </Link>
                             {(user?.role === 'seller' || user?.role === 'admin') && (
-                                <Link to={`/products/${product.id}/edit`} style={styles.link}>
-                                    <button style={styles.editButton}>Edit</button>
+                                <Link to={`/products/${product.id}/edit`}>
+                                    <button style={styles.button}>Edit</button>
                                 </Link>
                             )}
                             {user?.role === 'admin' && (

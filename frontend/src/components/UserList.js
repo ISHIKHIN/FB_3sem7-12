@@ -48,52 +48,63 @@ function UserList() {
             maxWidth: '1200px',
             margin: '0 auto',
         },
+        title: {
+            fontSize: '24px',
+            fontWeight: 'normal',
+            marginBottom: '20px',
+        },
         table: {
             width: '100%',
             borderCollapse: 'collapse',
             marginTop: '20px',
         },
         th: {
-            border: '1px solid #ddd',
+            border: '1px solid #eee',
             padding: '12px',
-            backgroundColor: '#f2f2f2',
+            backgroundColor: '#f9f9f9',
             textAlign: 'left',
+            fontSize: '14px',
+            fontWeight: 'normal',
         },
         td: {
-            border: '1px solid #ddd',
+            border: '1px solid #eee',
             padding: '12px',
+            fontSize: '14px',
         },
         button: {
-            backgroundColor: '#dc3545',
-            color: 'white',
+            backgroundColor: '#000',
+            color: '#fff',
             border: 'none',
             padding: '5px 10px',
-            borderRadius: '4px',
+            fontSize: '12px',
             cursor: 'pointer',
-            marginRight: '10px',
+            borderRadius: '2px',
+            marginRight: '8px',
         },
         editButton: {
-            backgroundColor: '#ffc107',
-            color: 'black',
+            backgroundColor: '#666',
+            color: '#fff',
             border: 'none',
             padding: '5px 10px',
-            borderRadius: '4px',
+            fontSize: '12px',
             cursor: 'pointer',
-            marginRight: '10px',
+            borderRadius: '2px',
+            marginRight: '8px',
         },
         select: {
             padding: '5px',
-            borderRadius: '4px',
-            border: '1px solid #ddd',
+            fontSize: '12px',
+            border: '1px solid #ccc',
+            borderRadius: '2px',
         },
     };
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div style={{ color: 'red' }}>{error}</div>;
+    if (loading) return <div style={{ textAlign: 'center', padding: '40px' }}>Loading...</div>;
+    if (error) return <div style={{ color: '#ff0000', textAlign: 'center' }}>{error}</div>;
 
     return (
         <div style={styles.container}>
-            <h2>Users Management</h2>
+            <h2 style={styles.title}>Users Management</h2>
             <table style={styles.table}>
                 <thead>
                 <tr>
@@ -129,24 +140,28 @@ function UserList() {
                             )}
                         </td>
                         <td style={styles.td}>
-                <span style={{ color: user.isActive ? 'green' : 'red' }}>
-                  {user.isActive ? 'Active' : 'Blocked'}
-                </span>
+                            <span style={{ color: user.isActive ? '#00aa00' : '#ff0000' }}>
+                                {user.isActive ? 'Active' : 'Blocked'}
+                            </span>
                         </td>
                         <td style={styles.td}>
-                            {editingUser === user.id ? (
-                                <button onClick={() => setEditingUser(null)} style={styles.button}>
-                                    Cancel
-                                </button>
-                            ) : (
-                                <button onClick={() => setEditingUser(user.id)} style={styles.editButton}>
-                                    Edit Role
-                                </button>
-                            )}
-                            {user.isActive && user.role !== 'admin' && (
-                                <button onClick={() => handleBlock(user.id)} style={styles.button}>
-                                    Block
-                                </button>
+                            {user.role !== 'admin' && (
+                                <>
+                                    {editingUser === user.id ? (
+                                        <button onClick={() => setEditingUser(null)} style={styles.button}>
+                                            Cancel
+                                        </button>
+                                    ) : (
+                                        <button onClick={() => setEditingUser(user.id)} style={styles.editButton}>
+                                            Edit Role
+                                        </button>
+                                    )}
+                                    {user.isActive && (
+                                        <button onClick={() => handleBlock(user.id)} style={styles.button}>
+                                            Block user
+                                        </button>
+                                    )}
+                                </>
                             )}
                         </td>
                     </tr>

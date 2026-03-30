@@ -60,42 +60,57 @@ function ProductForm({ isEdit = false }) {
 
     const styles = {
         container: {
-            maxWidth: '600px',
-            margin: '0 auto',
-            padding: '20px',
+            maxWidth: '500px',
+            margin: '40px auto',
+            padding: '30px',
+            background: '#fff',
+            borderRadius: '4px',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+        },
+        title: {
+            fontSize: '24px',
+            fontWeight: 'normal',
+            marginBottom: '20px',
         },
         input: {
             width: '100%',
             padding: '10px',
             margin: '10px 0',
-            border: '1px solid #ddd',
-            borderRadius: '4px',
+            border: '1px solid #ccc',
+            borderRadius: '2px',
+            fontSize: '14px',
+            boxSizing: 'border-box',
         },
         textarea: {
             width: '100%',
             padding: '10px',
             margin: '10px 0',
-            border: '1px solid #ddd',
-            borderRadius: '4px',
+            border: '1px solid #ccc',
+            borderRadius: '2px',
+            fontSize: '14px',
             minHeight: '100px',
+            boxSizing: 'border-box',
         },
         button: {
-            backgroundColor: '#007bff',
-            color: 'white',
+            backgroundColor: '#000',
+            color: '#fff',
             border: 'none',
             padding: '10px 20px',
-            borderRadius: '4px',
+            fontSize: '14px',
             cursor: 'pointer',
+            borderRadius: '2px',
+            marginTop: '10px',
         },
         error: {
-            color: 'red',
+            color: '#ff0000',
+            fontSize: '14px',
             marginBottom: '10px',
         },
     };
 
     return (
         <div style={styles.container}>
-            <h2>{isEdit ? 'Edit Product' : 'Create Product'}</h2>
+            <h2 style={styles.title}>{isEdit ? 'Edit Product' : 'Create Product'}</h2>
             {error && <div style={styles.error}>{error}</div>}
             <form onSubmit={handleSubmit}>
                 <input

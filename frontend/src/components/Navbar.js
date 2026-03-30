@@ -13,28 +13,32 @@ function Navbar() {
 
     const styles = {
         nav: {
-            backgroundColor: '#333',
-            padding: '1rem',
+            backgroundColor: '#fff',
+            padding: '15px 20px',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
+            borderBottom: '1px solid #eee',
         },
         link: {
-            color: 'white',
+            color: '#000',
             textDecoration: 'none',
-            marginRight: '1rem',
+            marginRight: '20px',
+            fontSize: '14px',
         },
         button: {
-            backgroundColor: '#dc3545',
-            color: 'white',
+            backgroundColor: '#000',
+            color: '#fff',
             border: 'none',
-            padding: '0.5rem 1rem',
+            padding: '6px 12px',
             cursor: 'pointer',
-            borderRadius: '4px',
+            fontSize: '12px',
+            borderRadius: '2px',
         },
         userInfo: {
-            color: 'white',
-            marginRight: '1rem',
+            fontSize: '12px',
+            color: '#666',
+            marginRight: '15px',
         },
     };
 
@@ -52,9 +56,9 @@ function Navbar() {
             <div>
                 {user ? (
                     <>
-            <span style={styles.userInfo}>
-              {user.username} ({user.role})
-            </span>
+                        <span style={styles.userInfo}>
+                            {user.username} ({user.role})
+                        </span>
                         <button onClick={handleLogout} style={styles.button}>Logout</button>
                     </>
                 ) : (

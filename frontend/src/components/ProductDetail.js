@@ -25,58 +25,60 @@ function ProductDetail() {
 
     const styles = {
         container: {
-            maxWidth: '800px',
-            margin: '0 auto',
-            padding: '20px',
-        },
-        card: {
-            border: '1px solid #ddd',
-            borderRadius: '8px',
-            padding: '20px',
-            backgroundColor: '#f9f9f9',
+            maxWidth: '600px',
+            margin: '40px auto',
+            padding: '30px',
+            background: '#fff',
+            borderRadius: '4px',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
         },
         title: {
-            fontSize: '2rem',
-            fontWeight: 'bold',
+            fontSize: '28px',
+            fontWeight: 'normal',
             marginBottom: '20px',
         },
+        category: {
+            fontSize: '14px',
+            color: '#666',
+            marginBottom: '10px',
+        },
         price: {
-            color: '#28a745',
-            fontSize: '1.5rem',
+            fontSize: '24px',
             fontWeight: 'bold',
             margin: '20px 0',
         },
-        backButton: {
-            backgroundColor: '#6c757d',
-            color: 'white',
+        description: {
+            fontSize: '14px',
+            lineHeight: '1.6',
+            marginBottom: '30px',
+        },
+        button: {
+            backgroundColor: '#000',
+            color: '#fff',
             border: 'none',
             padding: '10px 20px',
-            borderRadius: '4px',
+            fontSize: '14px',
             cursor: 'pointer',
-            marginTop: '20px',
+            borderRadius: '2px',
         },
     };
 
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div style={{ color: 'red' }}>{error}</div>;
-    if (!product) return <div>Product not found</div>;
+    if (loading) return <div style={{ textAlign: 'center', padding: '40px' }}>Loading...</div>;
+    if (error) return <div style={{ color: '#ff0000', textAlign: 'center' }}>{error}</div>;
+    if (!product) return <div style={{ textAlign: 'center' }}>Product not found</div>;
 
     return (
         <div style={styles.container}>
-            <div style={styles.card}>
-                <h1 style={styles.title}>{product.title}</h1>
-                <div>
-                    <strong>Category:</strong> {product.category}
-                </div>
-                <div style={styles.price}>${product.price}</div>
-                <div>
-                    <strong>Description:</strong>
-                    <p>{product.description}</p>
-                </div>
-                <Link to="/products">
-                    <button style={styles.backButton}>Back to Products</button>
-                </Link>
+            <h1 style={styles.title}>{product.title}</h1>
+            <div style={styles.category}>Category: {product.category}</div>
+            <div style={styles.price}>{product.price} ₽</div>
+            <div style={styles.description}>
+                <strong>Description:</strong>
+                <p>{product.description}</p>
             </div>
+            <Link to="/products">
+                <button style={styles.button}>Back to Products</button>
+            </Link>
         </div>
     );
 }

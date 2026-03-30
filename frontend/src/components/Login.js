@@ -27,36 +27,49 @@ function Login() {
     const styles = {
         container: {
             maxWidth: '400px',
-            margin: '50px auto',
-            padding: '20px',
-            border: '1px solid #ddd',
-            borderRadius: '8px',
+            margin: '40px auto',
+            padding: '30px',
+            background: '#fff',
+            borderRadius: '4px',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
+        },
+        title: {
+            fontSize: '24px',
+            fontWeight: 'normal',
+            marginBottom: '20px',
+            textAlign: 'center',
         },
         input: {
             width: '100%',
             padding: '10px',
             margin: '10px 0',
-            border: '1px solid #ddd',
-            borderRadius: '4px',
+            border: '1px solid #ccc',
+            borderRadius: '2px',
+            fontSize: '14px',
+            boxSizing: 'border-box',
         },
         button: {
             width: '100%',
             padding: '10px',
-            backgroundColor: '#007bff',
-            color: 'white',
+            backgroundColor: '#000',
+            color: '#fff',
             border: 'none',
-            borderRadius: '4px',
+            borderRadius: '2px',
+            fontSize: '14px',
             cursor: 'pointer',
+            marginTop: '10px',
         },
         error: {
-            color: 'red',
+            color: '#ff0000',
+            fontSize: '14px',
             marginBottom: '10px',
+            textAlign: 'center',
         },
     };
 
     return (
         <div style={styles.container}>
-            <h2>Login</h2>
+            <h2 style={styles.title}>Login</h2>
             {error && <div style={styles.error}>{error}</div>}
             <form onSubmit={handleSubmit}>
                 <input
